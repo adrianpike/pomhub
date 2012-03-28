@@ -17,11 +17,13 @@
     <% end %>
     </h1>
 
+    <% if current_user then %>
     <div class="organizations-nav">
       <% current_user.memberships.active.each {|membership| %>
         <%=link_to membership.organization.name, membership.organization %>
       <% } %>
     </div>
+    <% end %>
 
     <%= render :partial => '/users/authentication' %>
   </header>
