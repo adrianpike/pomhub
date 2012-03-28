@@ -1,0 +1,149 @@
+@import 'mixins.css';
+
+.rounded-corners (@radius: 5px) {
+  border-radius: @radius;
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+}
+
+// http://www.colourlovers.com/palette/444487/Curiosity_Killed
+@primary-dark: #555152;
+@primary-light: #eee;
+@highlight: #99173c;
+
+body {
+  font-family: 'PT Sans', sans-serif;
+  font-size:13px;
+  line-height:1.5em;
+  a,p {
+    font-family: 'PT Sans', sans-serif;
+    font-size:13px;
+    line-height:1.5em;
+    color: @primary-light;
+  }
+  background-color:@primary-dark;
+  color:@primary-light;
+}
+
+header {
+  position:relative;
+  background-color:@primary-light;
+  border-bottom:1px solid @primary-light - #222;
+
+  overflow:hidden; /* fix floats a better way */
+
+  a {
+    color: @primary-dark;
+  }
+
+  h1 a {
+    display:block;
+    margin:0px;
+    line-height:1.1em;
+    text-decoration:none;
+    font-size:30px;
+    font-weight:800;
+    padding:5px;
+    color:@primary-dark - #222;
+    float:left;
+  }
+  h1 a:hover {
+    color: @highlight;
+  }
+
+  div.organizations-nav {
+    position:absolute;
+    top:0px;
+    right:10px;
+  }
+  div.authentication {
+    position:absolute;
+    bottom:0px;
+    right:10px;
+  }
+}
+
+footer {
+  text-align:center;
+}
+
+pre {
+  font-family:monospace;
+  color:#0f0;
+  background-color:#000;
+}
+
+p {
+  margin:1em 0px;
+}
+
+
+ul.userlist {
+  li {
+    border-bottom:1px solid @primary-dark - #111;
+    margin:10px;
+    padding:10px;
+    min-height:80px;
+    a.avatar-link {
+      float:left;
+      .rounded-corners(10px);
+      height:80px;
+      width:80px;
+      display:block;
+      box-shadow: inset 0px 2px 5px rgba(0,0,0,0.8);
+      overflow:hidden;
+      border-top:1px solid @primary-dark - #111;
+      border-bottom:1px solid @primary-dark + #111;
+      img {
+        z-index: -1;
+        .rounded-corners(10px);
+        position: relative;
+      }
+    }
+    h3 {
+      font-size:50px;
+      font-weight:800;
+      margin:20px 10px;
+      text-shadow: 0px -1px 0px @primary-dark - #111;
+    }
+    a.name-link {
+      margin:10px 10px 0px;
+      display:block;
+    }
+    div.user-info {
+      float:left;
+      border-right:1px solid @primary-dark + #111;
+    }
+    p {
+      float:left;
+      margin-top:0px;
+      font-size:20px;
+      margin-left:10px;
+    }
+  }
+}
+
+div.management-bar {
+  background-color:#677;
+}
+
+div.pending-invitations {
+  background-color:#766;
+}
+
+article.user {
+  h1 {
+    font-size:60px;
+    line-height:80px;
+    img { float:left; margin-right:10px; }
+    border-bottom:1px solid @primary-dark + #111;
+    margin:10px;
+    padding:10px;
+  }
+
+  div.pomodoro {
+    border-bottom:1px solid @primary-dark + #111;
+    margin:10px;
+    padding:10px;
+  }
+}

@@ -1,0 +1,9 @@
+<div class="authentication">
+<% if current_user then %>
+  <%=link_to current_user, edit_user_path(current_user) %>
+  <%=link_to 'Sign out', destroy_user_session_path %>
+<% else %>
+  <%=link_to 'Sign in with Github', '/auth/github' %>
+  <%=link_to 'Sign in with Email', '/users/sign_in' %>
+<% end %>
+</div>

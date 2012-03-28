@@ -1,0 +1,16 @@
+<%=simple_form_for @user do |f| %>
+
+  <%=f.input :public %>
+  <%=f.input :pomodoro_length_in_minutes %>
+
+  <%=f.button :submit%>
+<% end %>
+
+<h2>Manage My Organizations</h2>
+<ul>
+<% current_user.owned_organizations.each{|org| %>
+  <li><%=link_to org.name, edit_organization_path(org) %></li>
+<% } %>
+</ul>
+<%=link_to 'New Organization', new_organization_path %>
+</div>

@@ -1,0 +1,19 @@
+<div class="setup">
+  <h2>Welcome to Pomhub!</h2>
+  <p>Let's get you up and running as quickly as possible. PomHub is intended to be integrated with a third-party Pomodoro timer, such as Pomodoro.app, but you can easily use PomHub as a standalone timer. Once your first Pomodoro has shown up, these setup steps will go away. You can always get back to them in the help.</p>
+
+  <p>By default, all of your Pomodoros are private, and can only be seen by yourself and organizations you join. You can easily change this in your settings.</p>
+  <p>If you haven't already, make sure and link your Github, so we can automatically reference repositories or issues you mention.</p>
+
+  <h3>Custom Integration</h3>
+  <p>Your API token is: <strong><%=@user.authentication_token%></strong></p>
+
+  <h3>Pomodoro.app</h3>
+  <p>Pomodoro.app is a great piece of software. To link Pomodoro.app to PomHub, go into your Pomodoro Preferences, into Scripts, and put the following snippets into Start and End, respectively.</p>
+  <strong>Start</strong>
+  <pre>
+    do shell script "curl -d 'auth_token=<%=@user.authentication_token%>&amp;pomodoro[description]=$pomodoroName' <%=start_user_pomodoros_url(@user)%>"</pre>
+  <strong>End</strong>
+  <pre>
+    do shell script "curl -d 'auth_token=<%=@user.authentication_token%>&amp;pomodoro[description]=$pomodoroName' <%=stop_user_pomodoros_url(@user)%>"</pre>
+</div>

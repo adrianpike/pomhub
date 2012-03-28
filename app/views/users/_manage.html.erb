@@ -1,0 +1,14 @@
+<% if current_user.memberships.pending_user.size > 0 then %>
+<div class="pending-invitations">
+  <strong>You have pending organization invitations.</strong>
+  <ul>
+  <% current_user.memberships.pending_user.each {|membership| %>
+    <li><%=link_to membership.organization.name, membership.organization %>
+
+      <%=link_to 'Approve', approve_organization_membership_path(membership.organization, membership), :method => "put" %>
+      <%=link_to 'Reject', reject_organization_membership_path(membership.organization, membership), :method => "put" %>
+    </li>
+  <% } %>
+  </ul>
+</div>
+<% end %>

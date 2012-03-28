@@ -1,0 +1,9 @@
+<%= render :partial => '/organizations/form' %>
+
+<h2>Invite User</h2>
+<%=simple_form_for [@organization,@organization.memberships.build] do |f| %>
+
+  <%=f.input :email %>
+
+  <%=f.button :submit %>
+<% end %>

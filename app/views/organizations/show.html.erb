@@ -1,0 +1,8 @@
+<% if current_user == @organization.owner then %>
+  <%=render :partial => '/organizations/manage' %>
+<% end %>
+
+
+<ul class="userlist">
+  <%= render @users %>
+</ul>

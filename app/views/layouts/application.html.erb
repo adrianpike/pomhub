@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pomhub</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+  <header>
+    <h1><a href="/">PomHub</a>
+    <% if @organization and @organization.persisted? then %>
+    <a href="<%=organization_path(@organization)%>">&mdash; <%=@organization.name %></a>
+    <% end %>
+    </h1>
+
+    <div class="organizations-nav">
+      <% current_user.memberships.active.each {|membership| %>
+        <%=link_to membership.organization.name, membership.organization %>
+      <% } %>
+    </div>
+
+    <%= render :partial => '/users/authentication' %>
+  </header>
+
+  <%= yield %>
+
+  <footer>
+    <div class="social_buttons">
+
+    </div>
+    <div class="legal">
+      &copy; 2012 <a href="http://twitter.com/adrianpike">Adrian Pike</a>, with a <a href="http://github.com/adrianpike/pomhub/CONTRIBUTORS">lotta help from my friends.</a>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+<li class="user" id="<%=dom_id(user)%>">
+  <a class="avatar-link" href="<%=url_for(user)%>">
+    <img src="<%=user.avatar%>" alt="<%=user%>">
+  </a>
+  <div class="user-info">
+    <h3 data-pom-start=<%=raw user.active_pomodoro.try(:started_at).to_json%> data-pom-length-in-minutes=<%=raw user.pomodoro_length_in_minutes.to_s.to_json%>><%=user.time_left%></h3>
+    <a href="<%=url_for(user)%>" class="name-link">
+      <strong><%=user%></strong>
+    </a>
+  </div>
+  <p><%=user.pomodoro_description%></p>
+</li>
