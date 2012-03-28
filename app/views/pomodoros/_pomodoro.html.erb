@@ -1,4 +1,8 @@
 <div class="pomodoro">
 <%=I18n.l(pomodoro.started_at)%> &mdash; <%=I18n.l(pomodoro.stopped_at) rescue 'N/A'%>
 <p><%=pomodoro.githubbed_description%></p>
+
+<% if current_user == pomodoro.user then %>
+  <%=link_to 'Delete', user_pomodoro_path(current_user, pomodoro), :method => :delete%>
+<% end %>
 </div>

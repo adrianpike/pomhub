@@ -7,6 +7,7 @@
   <h1><img src="<%=@user.avatar%>" alt="<%=@user%>"><%=@user%></h1>
   <% if current_user == @user.model then %>
     <%=render :partial => '/users/welcome' if @user.pomodoros.count == 0 %>
+    <%=link_to 'Start a Pomodoro!', new_user_pomodoro_path(current_user), :class => 'button' %>
   <% end %>
 
   <%= render PomodoroDecorator.decorate(@user.pomodoros.order('created_at desc')) %>

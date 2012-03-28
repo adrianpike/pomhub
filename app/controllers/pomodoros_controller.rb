@@ -20,4 +20,23 @@ class PomodorosController < ApplicationController
     respond_with([current_user, @pomodoro])
   end
 
+  def new
+    @pomodoro = current_user.pomodoros.build
+    respond_with(@pomodoro)
+  end
+
+  def create
+    @pomodoro = current_user.pomodoros.create(params[:pomodoro].merge({
+      :started_at => Time.now
+    }))
+    respond_with(current_user)
+  end
+
+  def destroy
+    @pomodoro = current_user.pomodoros.find(params[:id])
+    @pomodoro.destroy
+
+    respond_with(current_user)
+  end
+
 end

@@ -1,5 +1,21 @@
 @import 'mixins.css';
 
+
+.gradient(@color: #F5F5F5, @start: #EEE, @stop: #FFF) {
+  background: @color;
+  background: -webkit-gradient(linear,
+                               left bottom,
+                               left top,
+                               color-stop(0, @start),
+                               color-stop(1, @stop));
+  background: -ms-linear-gradient(bottom,
+                                  @start,
+                                  @stop);
+  background: -moz-linear-gradient(center bottom,
+                                   @start 0%,
+                                   @stop 100%);
+}
+
 .rounded-corners (@radius: 5px) {
   border-radius: @radius;
   -webkit-border-radius: @radius;
@@ -146,4 +162,15 @@ article.user {
     margin:10px;
     padding:10px;
   }
+}
+
+a.button { /* TODO: desuckify */
+  .rounded-corners(5px);
+  text-decoration:none;
+  padding:5px 10px;
+  margin:5px;
+  font-weight:800;
+
+  color:@primary-dark - #222;
+  .gradient(@primary-light, @primary-light - #222, @primary-light);
 }
