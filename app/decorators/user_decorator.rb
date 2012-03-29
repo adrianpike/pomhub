@@ -17,6 +17,7 @@ class UserDecorator < ApplicationDecorator
   def time_left
     if active_pomodoro then
       time = PomodoroDecorator.decorate(active_pomodoro).time_left
+      '--:--' and return unless time
       minutes, seconds = (time.divmod(1.minute))
       "#{minutes}:#{"%02d" % seconds.floor}"
     else

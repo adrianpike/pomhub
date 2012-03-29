@@ -25,7 +25,7 @@ class PomodoroDecorator < ApplicationDecorator
   end
 
   def time_left
-    model.time_left > 0 ? model.time_left : '0'
+    model.time_left > 0 ? model.time_left : nil
   end
 
 end
