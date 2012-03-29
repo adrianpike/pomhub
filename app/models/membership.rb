@@ -29,8 +29,15 @@ class Membership < ActiveRecord::Base
     end
   end
 
-  after_create :send_email_notification
+  after_create :send_invitation_approval
   def send_email_notification
+    if email then
+
+    end
+  end
+
+  after_update :send_invitation_update
+  def send_invitation_update
 
   end
 end
