@@ -2,7 +2,7 @@
 
 <h2>Members</h2>
 <ul>
-<% @organization.memnberships.each{|mship| %>
+<% @organization.memberships.each{|mship| %>
   <li><%=mship.user.to_s%> &mdash; <%=mship.friendly_status%></li>
 <% } %>
 </ul>
