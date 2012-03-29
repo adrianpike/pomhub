@@ -15,6 +15,7 @@ Pomhub::Application.routes.draw do
       member do
         put :approve
         put :reject
+        post :request_membership
       end
     end
   end

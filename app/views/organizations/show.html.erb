@@ -2,7 +2,18 @@
   <%=render :partial => '/organizations/manage' %>
 <% end %>
 
+<% unless current_user.memberships.where(:organization_id => @organization.id).count > 0 then %>
+  <%=link_to 'Request Membership', request_membership_organization_membership_path(@organization), :method => :post %>
+<% end %>
 
-<ul class="userlist">
-  <%= render @users %>
-</ul>
+<% if @organization.public || current_user.memberships.where(:organization_id => @organization.id).active.count > 0 then %>
+
+  <ul class="userlist">
+    <%= render @users %>
+  </ul>
+
+<% else %>
+
+  <p>You're not a member of this organization.</p>
+
+<% end %>

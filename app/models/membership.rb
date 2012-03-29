@@ -23,7 +23,7 @@ class Membership < ActiveRecord::Base
   attr_accessor :email
   before_validation :fetch_user_by_email
   def fetch_user_by_email
-    unless user then
+    unless self.user or self.user_id then
       self.user = User.find_or_create_by_email(self.email)
       raise Exception unless self.user
     end

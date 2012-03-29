@@ -10,6 +10,17 @@ class MembershipsController < ApplicationController
     respond_with(@organization)
   end
 
+  def request_membership
+    @organization = Organization.find(params[:organization_id])
+    @membership = Membership.create({
+      :user => current_user,
+      :organization => @organization,
+      :status => Membership::STATUSES[:pending_org]
+    })
+
+    respond_with(@membership, :location => @organization)
+  end
+
   def approve
     @organization = Organization.find(params[:organization_id])
     @membership = find_manageable_membership

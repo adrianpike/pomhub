@@ -9,7 +9,7 @@ class OrganizationsController < ApplicationController
   end
 
   def show
-    @organization = current_user.organizations.find(params[:id])
+    @organization = Organization.find(params[:id])
     @users = UserDecorator.decorate(@organization.memberships.active.collect(&:user).flatten)
   end
 

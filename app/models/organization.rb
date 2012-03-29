@@ -10,7 +10,7 @@ class Organization < ActiveRecord::Base
     Membership.create({
       :user => owner,
       :organization => self,
-      :status => 3
+      :status => Membership::STATUSES[:active]
     })
   end
 
